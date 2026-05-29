@@ -1,0 +1,18 @@
+# Secrets / local config
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.uv/
+
+# Runtime state (starter files are tracked empty; live position/heartbeat/history are not)
+state/position.json
+state/heartbeat.json
+state/history/v*.yaml
+
+# OS
+.DS_Store
