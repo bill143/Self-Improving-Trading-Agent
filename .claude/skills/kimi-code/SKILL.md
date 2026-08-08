@@ -96,6 +96,30 @@ unchanged and no local proxy is needed.
 | `ANTHROPIC_MODEL`, `ANTHROPIC_SMALL_FAST_MODEL`, `ANTHROPIC_DEFAULT_{OPUS,SONNET,HAIKU}_MODEL` | the Kimi slug | Keeps the main loop *and* background/fast-path calls on Kimi, so nothing silently bills at Claude prices |
 | `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | `1` | No non-essential calls from the routed session |
 
+## Troubleshooting
+
+- **"API Error: 400 status code (no body)"** in the Kimi window — Claude Code
+  hides the provider's error body. Run the diagnostic and read the real
+  responses:
+
+  ```bash
+  bash "<skill-dir>/launch.sh" --check
+  ```
+
+  Common causes, in order of likelihood:
+  1. A stray carriage return saved into `.openrouter_key` by a Windows
+     console, which malforms the `Authorization` header. The launcher now
+     strips whitespace on save and load; if the key was saved by an older
+     version, delete `.openrouter_key` and relaunch to re-enter it.
+  2. Key invalid, disabled, or out of credits — the `--check` key step shows
+     usage and limits; top up at https://openrouter.ai/credits.
+  3. If both `--check` steps return HTTP 200, the key is fine and the issue
+     is request shape. Relaunch with `MAX_THINKING_TOKENS=0` (disables
+     thinking blocks) and/or `KIMI_CODE_DEBUG=1` (sets `ANTHROPIC_LOG=debug`
+     for wire logs), e.g. `MAX_THINKING_TOKENS=0 bash launch.sh`.
+- **Bad key at launch:** the launcher preflights the stored key against
+  OpenRouter and re-prompts automatically if it's rejected.
+
 ## Expectations to set
 
 - Roughly ⅓ the cost of Claude on real builds; Kimi is 2–3× slower on heavy
