@@ -78,14 +78,23 @@ export ANTHROPIC_DEFAULT_SONNET_MODEL="$MODEL"
 export ANTHROPIC_DEFAULT_HAIKU_MODEL="$MODEL"
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 
+# Anthropic-style thinking blocks don't survive translation to every
+# provider; disabled by default. KIMI_CODE_THINKING=1 re-enables.
+if [[ "${KIMI_CODE_THINKING:-0}" != "1" ]]; then
+    export MAX_THINKING_TOKENS=0
+fi
+
 if [[ "${KIMI_CODE_DEBUG:-0}" == "1" ]]; then
     export ANTHROPIC_LOG=debug
 fi
 
-# Some Claude Code versions let a cached Anthropic login override env routing.
-# KIMI_CODE_ISOLATED=1 sidesteps that with a private config dir (one-time
-# onboarding there; personal ~/.claude skills won't load in that mode).
-if [[ "${KIMI_CODE_ISOLATED:-0}" == "1" ]]; then
+# Isolated by default: a cached Anthropic login in the shared config dir
+# gets mixed into requests by some Claude Code versions, poisoning the auth
+# header OpenRouter sees (bare 400s). A private config dir means one-time
+# onboarding in this window and no personal ~/.claude skills, but the
+# routing can never collide with the normal login. KIMI_CODE_ISOLATED=0
+# opts back into the shared config.
+if [[ "${KIMI_CODE_ISOLATED:-1}" != "0" ]]; then
     export CLAUDE_CONFIG_DIR="$SKILL_DIR/.claude-kimi"
     mkdir -p "$CLAUDE_CONFIG_DIR"
 fi

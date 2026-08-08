@@ -78,13 +78,16 @@ unchanged and no local proxy is needed.
   `MODEL` line in `launch.sh`.
 - **Rotate or remove the key:** `rm "<skill-dir>/.openrouter_key"` — the next
   launch re-prompts.
-- **If the launched window still talks to Anthropic** (or errors with
-  model-not-found), a cached Anthropic login is overriding the env vars in
-  that Claude Code version. Relaunch with `KIMI_CODE_ISOLATED=1`, which gives
-  the Kimi instance its own private `CLAUDE_CONFIG_DIR` inside the skill
-  folder. Trade-off: one-time onboarding in that window, and personal
-  `~/.claude` skills won't load in isolated mode. Never fix this with
-  `/logout`.
+- **Isolation (default on):** the Kimi instance runs with its own private
+  `CLAUDE_CONFIG_DIR` inside the skill folder, so a cached Anthropic login
+  can never bleed into requests aimed at OpenRouter (that clash produces
+  bare 400 errors). Trade-off: one-time onboarding in that window, and
+  personal `~/.claude` skills won't load there. Set `KIMI_CODE_ISOLATED=0`
+  to share the normal config instead — but never fix auth clashes with
+  `/logout`, which would log out the user's real sessions.
+- **Thinking (default off):** Anthropic-style thinking blocks don't survive
+  translation to every provider, so the launcher sets
+  `MAX_THINKING_TOKENS=0`. Set `KIMI_CODE_THINKING=1` to re-enable.
 
 ## What `launch.sh` exports (inside the new window only)
 
@@ -107,16 +110,18 @@ unchanged and no local proxy is needed.
   ```
 
   Common causes, in order of likelihood:
-  1. A stray carriage return saved into `.openrouter_key` by a Windows
+  1. A cached Anthropic login bleeding into the request auth (fixed by the
+     default isolated config dir — make sure the window was launched by a
+     current `launch.sh` and shows first-run onboarding once).
+  2. A stray carriage return saved into `.openrouter_key` by a Windows
      console, which malforms the `Authorization` header. The launcher now
      strips whitespace on save and load; if the key was saved by an older
      version, delete `.openrouter_key` and relaunch to re-enter it.
-  2. Key invalid, disabled, or out of credits — the `--check` key step shows
+  3. Key invalid, disabled, or out of credits — the `--check` key step shows
      usage and limits; top up at https://openrouter.ai/credits.
-  3. If both `--check` steps return HTTP 200, the key is fine and the issue
-     is request shape. Relaunch with `MAX_THINKING_TOKENS=0` (disables
-     thinking blocks) and/or `KIMI_CODE_DEBUG=1` (sets `ANTHROPIC_LOG=debug`
-     for wire logs), e.g. `MAX_THINKING_TOKENS=0 bash launch.sh`.
+  4. If both `--check` steps return HTTP 200 and it still fails, relaunch
+     with `KIMI_CODE_DEBUG=1` (sets `ANTHROPIC_LOG=debug`) and read the
+     failing request in the wire logs.
 - **Bad key at launch:** the launcher preflights the stored key against
   OpenRouter and re-prompts automatically if it's rejected.
 
