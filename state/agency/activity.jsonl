@@ -29,3 +29,4 @@
 {"ts": "2026-08-12T22:48:19Z", "event": "artifact_saved", "name": "phase7-sales-playbook-test"}
 {"ts": "2026-08-12T22:48:40Z", "event": "agent_task_finished", "agent": "sales-closer-agent", "stop_reason": "end_turn"}
 {"ts": "2026-08-12T22:48:40Z", "event": "gate_passed", "gate": "sales_readiness_passed"}
+{"ts": "2026-08-12T22:49:37Z", "event": "agent_task_started", "agent": "lead-scraper-agent", "task": "Operations step 1 \u2014 check get_state_summary. If uncontacted NEW leads are below 1,000, research and add a batch of new target businesses in the chosen niche with add_leads (franchise locations from 'phase2-franchise-targets' first, scored per your method)."}
