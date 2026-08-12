@@ -1,0 +1,14 @@
+{
+  "owner_context": {
+    "background": "Owner/operator background in construction contracting (O'Neill Contractors); works with government/federal construction bidding (SAM.gov/GovTribe). PROVISIONAL \u2014 inferred, pending owner questionnaire.",
+    "budget_for_tools": "unspecified \u2014 assume lean start (<$500/mo) until confirmed",
+    "business_connections": "Likely subcontractor/trade relationships via O'Neill Contractors (unconfirmed)",
+    "company": "O'Neill Contractors",
+    "country": "United States",
+    "email": "bill@oneillcontractors.com",
+    "industry_familiarity": "Construction trades: HVAC, roofing, plumbing, solar subcontractor networks (provisional)",
+    "name": "Bill",
+    "status": "PROVISIONAL \u2014 owner questionnaire not yet returned; rankings must state which assumptions matter"
+  },
+  "phase_gates": {}
+}
