@@ -241,6 +241,7 @@ class CRM:
         nxt = self.next_foundation_phase()
         return {
             "niche": self.config.get("niche"),
+            "owner_context": self.config.get("owner_context"),
             "next_foundation_phase": nxt[0] if nxt else None,
             "foundation_complete": nxt is None,
             "leads_total": len(leads),
