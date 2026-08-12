@@ -7,3 +7,4 @@
 {"ts": "2026-08-12T22:02:08Z", "event": "artifact_saved", "name": "phase2-franchise-targets"}
 {"ts": "2026-08-12T22:02:43Z", "event": "agent_task_finished", "agent": "market-research-agent", "stop_reason": "end_turn"}
 {"ts": "2026-08-12T22:02:43Z", "event": "gate_passed", "gate": "franchises_targeted"}
+{"ts": "2026-08-12T22:03:26Z", "event": "agent_task_started", "agent": "reactivation-agent", "task": "Execute Phase 3 \u2014 build the master AI Database Reactivation campaign for the chosen niche (all deliverables in your exact order: offer, Day 1/2/3 SMS+email, YES handler, NO/STOP handler). Save it with save_artifact as 'pillar1-reactivation-campaign'."}
