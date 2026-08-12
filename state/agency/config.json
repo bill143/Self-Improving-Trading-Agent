@@ -13,6 +13,7 @@
     "status": "PROVISIONAL \u2014 owner questionnaire not yet returned; rankings must state which assumptions matter"
   },
   "phase_gates": {
+    "franchises_targeted": true,
     "niche_selected": true
   }
 }

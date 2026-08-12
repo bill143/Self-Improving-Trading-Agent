@@ -4,3 +4,6 @@
 {"ts": "2026-08-12T21:57:30Z", "event": "agent_task_finished", "agent": "market-research-agent", "stop_reason": "end_turn"}
 {"ts": "2026-08-12T21:57:30Z", "event": "gate_passed", "gate": "niche_selected"}
 {"ts": "2026-08-12T21:58:12Z", "event": "agent_task_started", "agent": "market-research-agent", "task": "Execute Phase 2 \u2014 franchise targeting ('choose your ship') for the chosen niche (see get_state_summary). Identify the top 10 franchise brands per your filters and save the ranked list with save_artifact as 'phase2-franchise-targets'."}
+{"ts": "2026-08-12T22:02:08Z", "event": "artifact_saved", "name": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:02:43Z", "event": "agent_task_finished", "agent": "market-research-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T22:02:43Z", "event": "gate_passed", "gate": "franchises_targeted"}

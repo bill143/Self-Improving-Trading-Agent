@@ -1,2 +1,6 @@
 {"ts": "2026-08-12T21:57:10Z", "metric": "markets_ranked", "value": 3.0, "context": "phase1-niche-selection"}
 {"ts": "2026-08-12T21:57:12Z", "metric": "est_weeks_to_first_client", "value": 3.0, "context": "phase1-niche-selection"}
+{"ts": "2026-08-12T22:02:20Z", "metric": "franchise_brands_identified", "value": 10.0, "context": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:02:20Z", "metric": "brands_with_sourced_location_count", "value": 6.0, "context": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:02:20Z", "metric": "brands_with_verified_community_evidence", "value": 4.0, "context": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:02:20Z", "metric": "brands_flagged_unverified", "value": 4.0, "context": "phase2-franchise-targets"}
