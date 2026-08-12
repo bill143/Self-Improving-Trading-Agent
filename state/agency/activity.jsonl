@@ -1,2 +1,5 @@
 {"ts": "2026-08-12T21:54:27Z", "event": "artifact_saved", "name": "owner-context"}
 {"ts": "2026-08-12T21:54:33Z", "event": "agent_task_started", "agent": "market-research-agent", "task": "Execute Phase 1 \u2014 niche selection. Apply your three non-negotiable filters, rank the top 3 markets, choose #1, call set_niche with the winner, and save the full ranked analysis with save_artifact as 'phase1-niche-research'."}
+{"ts": "2026-08-12T21:56:59Z", "event": "artifact_saved", "name": "phase1-niche-research"}
+{"ts": "2026-08-12T21:57:30Z", "event": "agent_task_finished", "agent": "market-research-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T21:57:30Z", "event": "gate_passed", "gate": "niche_selected"}
