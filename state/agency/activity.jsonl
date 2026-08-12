@@ -8,3 +8,24 @@
 {"ts": "2026-08-12T22:02:43Z", "event": "agent_task_finished", "agent": "market-research-agent", "stop_reason": "end_turn"}
 {"ts": "2026-08-12T22:02:43Z", "event": "gate_passed", "gate": "franchises_targeted"}
 {"ts": "2026-08-12T22:03:26Z", "event": "agent_task_started", "agent": "reactivation-agent", "task": "Execute Phase 3 \u2014 build the master AI Database Reactivation campaign for the chosen niche (all deliverables in your exact order: offer, Day 1/2/3 SMS+email, YES handler, NO/STOP handler). Save it with save_artifact as 'pillar1-reactivation-campaign'."}
+{"ts": "2026-08-12T22:05:57Z", "event": "artifact_saved", "name": "pillar1-reactivation-campaign"}
+{"ts": "2026-08-12T22:06:18Z", "event": "agent_task_finished", "agent": "reactivation-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T22:06:18Z", "event": "gate_passed", "gate": "pillar1_reactivation_built"}
+{"ts": "2026-08-12T22:06:18Z", "event": "agent_task_started", "agent": "reviews-referrals-agent", "task": "Execute Phase 4 \u2014 build the master Reviews & Referrals system for the chosen niche (all 5 messages, SMS + email versions, plus the 5 review auto-responses). Save it with save_artifact as 'pillar2-reviews-referrals-system'."}
+{"ts": "2026-08-12T22:12:26Z", "event": "artifact_saved", "name": "pillar2-reviews-referrals-system"}
+{"ts": "2026-08-12T22:12:54Z", "event": "agent_task_finished", "agent": "reviews-referrals-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T22:12:54Z", "event": "gate_passed", "gate": "pillar2_reviews_referrals_built"}
+{"ts": "2026-08-12T22:12:54Z", "event": "agent_task_started", "agent": "lead-nurture-agent", "task": "Execute Phase 5 \u2014 build the master 5-message website lead nurture sequence (5-minute instant response, 24h, 48h, booking confirmations, no-show win-back). Save it with save_artifact as 'pillar3-speed-to-lead-sequence'."}
+{"ts": "2026-08-12T22:19:24Z", "event": "artifact_saved", "name": "pillar3-speed-to-lead-sequence"}
+{"ts": "2026-08-12T22:19:48Z", "event": "agent_task_finished", "agent": "lead-nurture-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T22:19:48Z", "event": "gate_passed", "gate": "pillar3_speed_to_lead_built"}
+{"ts": "2026-08-12T22:19:48Z", "event": "agent_task_started", "agent": "ads-agent", "task": "Execute Phase 6 \u2014 ad intelligence. Research the winning ad patterns for the chosen niche (hooks, promises, CTAs, structure, visual style), derive the winning formula, write 3 ad variations for our offer, and save the full kit with save_artifact as 'phase6-ad-intelligence-kit'."}
+{"ts": "2026-08-12T22:24:02Z", "event": "artifact_saved", "name": "phase6-ad-intelligence-kit"}
+{"ts": "2026-08-12T22:24:28Z", "event": "agent_task_finished", "agent": "ads-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T22:24:28Z", "event": "gate_passed", "gate": "ad_intelligence_built"}
+{"ts": "2026-08-12T22:24:28Z", "event": "agent_task_started", "agent": "sales-closer-agent", "task": "Execute Phase 7 \u2014 sales readiness. Write out the complete 7-step sales framework operationalized for the chosen niche (discovery questions with real numbers to collect, pitch lines per pillar weaving prospect words back in, temperature-check re-loop, close sequence with 12-month/30-day-out terms), r"}
+{"ts": "2026-08-12T22:44:19Z", "event": "artifact_saved", "name": "phase7-sales-playbook-test"}
+{"ts": "2026-08-12T22:48:11Z", "event": "artifact_saved", "name": "phase7-sales-playbook"}
+{"ts": "2026-08-12T22:48:19Z", "event": "artifact_saved", "name": "phase7-sales-playbook-test"}
+{"ts": "2026-08-12T22:48:40Z", "event": "agent_task_finished", "agent": "sales-closer-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T22:48:40Z", "event": "gate_passed", "gate": "sales_readiness_passed"}

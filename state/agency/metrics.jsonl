@@ -4,3 +4,16 @@
 {"ts": "2026-08-12T22:02:20Z", "metric": "brands_with_sourced_location_count", "value": 6.0, "context": "phase2-franchise-targets"}
 {"ts": "2026-08-12T22:02:20Z", "metric": "brands_with_verified_community_evidence", "value": 4.0, "context": "phase2-franchise-targets"}
 {"ts": "2026-08-12T22:02:20Z", "metric": "brands_flagged_unverified", "value": 4.0, "context": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:06:01Z", "metric": "pillar1_campaign_built", "value": 1.0, "context": "phase3 \u00b7 home services (HVAC/plumbing/electrical)"}
+{"ts": "2026-08-12T22:06:01Z", "metric": "reactivation_message_variants_written", "value": 27.0, "context": "phase3 \u00b7 3-day SMS+email x 3 trades, YES/NO handlers, objection micro-handlers"}
+{"ts": "2026-08-12T22:12:32Z", "metric": "pillar2_messages_built", "value": 21.0, "context": "phase4_pillar2_reviews_referrals"}
+{"ts": "2026-08-12T22:12:32Z", "metric": "pillar2_target_reviews_per_client_month", "value": 25.0, "context": "phase4_pillar2_reviews_referrals"}
+{"ts": "2026-08-12T22:12:32Z", "metric": "pillar2_target_referral_leads_per_client_month", "value": 7.0, "context": "phase4_pillar2_reviews_referrals"}
+{"ts": "2026-08-12T22:12:32Z", "metric": "pillar2_target_negatives_intercepted_per_client_month", "value": 13.0, "context": "phase4_pillar2_reviews_referrals"}
+{"ts": "2026-08-12T22:19:29Z", "metric": "pillar3_sequence_messages_built", "value": 5.0, "context": "phase5_speed_to_lead_master_build"}
+{"ts": "2026-08-12T22:19:29Z", "metric": "response_time_sla_seconds", "value": 300.0, "context": "phase5_speed_to_lead_master_build"}
+{"ts": "2026-08-12T22:24:05Z", "metric": "competitor_ads_analyzed", "value": 6.0, "context": "phase6-ad-intelligence"}
+{"ts": "2026-08-12T22:24:05Z", "metric": "ad_variations_built", "value": 3.0, "context": "phase6-ad-intelligence"}
+{"ts": "2026-08-12T22:48:19Z", "metric": "drill_mode_selftest_score", "value": 9.1, "context": "phase7-sales-readiness"}
+{"ts": "2026-08-12T22:48:19Z", "metric": "framework_steps_completed_in_drill", "value": 7.0, "context": "phase7-sales-readiness"}
+{"ts": "2026-08-12T22:48:19Z", "metric": "drill_temperature_check_final_score", "value": 9.5, "context": "phase7-sales-readiness"}

@@ -13,7 +13,12 @@
     "status": "PROVISIONAL \u2014 owner questionnaire not yet returned; rankings must state which assumptions matter"
   },
   "phase_gates": {
+    "ad_intelligence_built": true,
     "franchises_targeted": true,
-    "niche_selected": true
+    "niche_selected": true,
+    "pillar1_reactivation_built": true,
+    "pillar2_reviews_referrals_built": true,
+    "pillar3_speed_to_lead_built": true,
+    "sales_readiness_passed": true
   }
 }
