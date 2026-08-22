@@ -1,0 +1,514 @@
+{
+  "1174bcffe9e3": {
+    "business_name": "Benjamin Franklin Plumbing of Port St. Lucie",
+    "city": "Port St. Lucie",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "1174bcffe9e3",
+    "notes": [
+      "Touch 1 attempted \n call 82e83a7366fe QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+17722053132",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "124e691dbf68": {
+    "business_name": "One Hour Heating & Air Conditioning of Medina",
+    "city": "Medina",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "124e691dbf68",
+    "notes": [
+      "Touch 1 attempted \n call 250d0f026bbf + SMS e8b040d1d01e. BOTH QUEUED, NOT DELIVERED \n no voice/SMS integration configured. No live conversation, no gatekeeper reached, no outcome. Script: cold-call-script-v2 (test-ads line removed \n no ad research exists for Medina OH). Touch 2 due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+13307220022",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "OH",
+    "website": "onehourheatandair.com"
+  },
+  "1816e3750e3b": {
+    "business_name": "One Hour Heating & Air Conditioning of Conover",
+    "city": "Conover",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "1816e3750e3b",
+    "notes": [
+      "Touch 1 attempted \n call 96aceaa87be9 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+19802563882",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "NC",
+    "website": "onehourheatandair.com"
+  },
+  "303e27816b8d": {
+    "business_name": "One Hour Heating & Air Conditioning of Avon",
+    "city": "Avon",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "303e27816b8d",
+    "notes": [
+      "Touch 1 attempted \n call b3a5b8e97759 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+14402206609",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "OH",
+    "website": "onehourheatandair.com"
+  },
+  "39276f28bcd4": {
+    "business_name": "One Hour Heating & Air Conditioning of Orlando",
+    "city": "Orlando",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "39276f28bcd4",
+    "notes": [
+      "Touch 1 attempted \n call 3a73ba19627c QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+14075199653",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "onehourheatandair.com"
+  },
+  "3a1cbe4a9f5d": {
+    "business_name": "Benjamin Franklin Plumbing of Orlando (loc 2)",
+    "city": "Orlando",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "3a1cbe4a9f5d",
+    "notes": [
+      "HELD, NOT DIALLED \n Orlando FL cluster sibling of 646577c82fe5. Deliberately left in NEW pending ownership qualification. Three BF numbers in one metro is the FDD multi-territory pattern; one close may cover all three."
+    ],
+    "owner_name": "",
+    "phone": "+16892108055",
+    "score": 3,
+    "stage": "NEW",
+    "state": "FL",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "3cbb4a55cbbe": {
+    "business_name": "One Hour Heating & Air Conditioning of Augusta",
+    "city": "Augusta",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "3cbb4a55cbbe",
+    "notes": [
+      "Touch 1 attempted \n call 6cda0963cb52 QUEUED, NOT DELIVERED. AUGUSTA CLUSTER PRIMARY \n sibling 460d619627b8 held uncalled until ownership qualified (\"how many locations and which brands do you run?\"). No conversation, no outcome."
+    ],
+    "owner_name": "",
+    "phone": "+17067338703",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "GA",
+    "website": "onehourheatandair.com"
+  },
+  "3ced641aac57": {
+    "business_name": "One Hour Heating & Air Conditioning of Morehead City",
+    "city": "Morehead City",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "3ced641aac57",
+    "notes": [
+      "Touch 1 attempted \n call b41c85b26978 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+12522946463",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "NC",
+    "website": "onehourheatandair.com"
+  },
+  "432693f4b589": {
+    "business_name": "Benjamin Franklin Plumbing of Alpharetta",
+    "city": "Alpharetta",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "432693f4b589",
+    "notes": [
+      "Touch 1 attempted \n call 4bc6408850c4 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+16788332754",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "GA",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "460d619627b8": {
+    "business_name": "One Hour Heating & Air Conditioning of Augusta (loc 2)",
+    "city": "Augusta",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "460d619627b8",
+    "notes": [
+      "HELD, NOT DIALLED \n Augusta GA cluster sibling of 3cbb4a55cbbe. Deliberately left in NEW. Do not dial until the primary is reached and ownership is qualified; calling both risks two pitches into one owner's building. Release condition: primary answers \"how many locations / which brands?\""
+    ],
+    "owner_name": "",
+    "phone": "+17069141617",
+    "score": 3,
+    "stage": "NEW",
+    "state": "GA",
+    "website": "onehourheatandair.com"
+  },
+  "464c2f26642a": {
+    "business_name": "Benjamin Franklin Plumbing of Cincinnati",
+    "city": "Cincinnati",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "464c2f26642a",
+    "notes": [
+      "Touch 1 attempted \n call 182a803c3d02 + SMS ca5fdea31d5c. BOTH QUEUED, NOT DELIVERED. No conversation, no outcome. Script v2. Touch 2 due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+15138134992",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "OH",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "58e10f9927d9": {
+    "business_name": "Benjamin Franklin Plumbing of Columbus",
+    "city": "Columbus",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "58e10f9927d9",
+    "notes": [
+      "Touch 1 attempted \n call 783e7ab847ee QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+16143444325",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "OH",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "646577c82fe5": {
+    "business_name": "Benjamin Franklin Plumbing of Orlando",
+    "city": "Orlando",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "646577c82fe5",
+    "notes": [
+      "Touch 1 attempted \n call 0a57597942ba QUEUED, NOT DELIVERED. ORLANDO CLUSTER PRIMARY \n siblings 3a1cbe4a9f5d + b2e3417b0392 held uncalled until ownership qualified. Possible 3-territory owner = 3-location close. No conversation, no outcome."
+    ],
+    "owner_name": "",
+    "phone": "+14075841042",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "6a6c82f5dc5b": {
+    "business_name": "One Hour Heating & Air Conditioning of Pompano Beach",
+    "city": "Pompano Beach",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "6a6c82f5dc5b",
+    "notes": [
+      "Touch 1 attempted \n call a15f8b715636 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+19543798260",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "onehourheatandair.com"
+  },
+  "6a7ce7bc44da": {
+    "business_name": "One Hour Heating & Air Conditioning of Port Orange",
+    "city": "Port Orange",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "6a7ce7bc44da",
+    "notes": [
+      "Touch 1 attempted \n call a155fab786b2 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+14072788081",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "onehourheatandair.com"
+  },
+  "6d38ace3e497": {
+    "business_name": "One Hour Heating & Air Conditioning of Cincinnati",
+    "city": "Cincinnati",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "6d38ace3e497",
+    "notes": [
+      "Touch 1 attempted \n call ca393c85ca13 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+15138153460",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "OH",
+    "website": "onehourheatandair.com"
+  },
+  "8ac6a5f8183b": {
+    "business_name": "One Hour Heating & Air Conditioning of Warner Robins",
+    "city": "Warner Robins",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "8ac6a5f8183b",
+    "notes": [
+      "Touch 1 attempted \n call 925118772af0 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+14782005636",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "GA",
+    "website": "onehourheatandair.com"
+  },
+  "8ae66946d33e": {
+    "business_name": "One Hour Heating & Air Conditioning of Naples",
+    "city": "Naples",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "8ae66946d33e",
+    "notes": [
+      "Touch 1 attempted \n call 8a93dbd3acf1 + SMS bacbd03b0718. BOTH QUEUED, NOT DELIVERED. No conversation, no outcome. Script v2. Touch 2 due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+12392373360",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "onehourheatandair.com"
+  },
+  "97917d1d1e17": {
+    "business_name": "One Hour Heating & Air Conditioning of Daytona Beach",
+    "city": "Daytona Beach",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "97917d1d1e17",
+    "notes": [
+      "Touch 1 attempted \n call da7e25f49d78 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+13862220882",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "onehourheatandair.com"
+  },
+  "99073a7f1c97": {
+    "business_name": "One Hour Heating & Air Conditioning of Englewood",
+    "city": "Englewood",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "99073a7f1c97",
+    "notes": [
+      "Touch 1 attempted \n call d9f59f97db5a QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+19379152815",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "OH",
+    "website": "onehourheatandair.com"
+  },
+  "a1041ccd6761": {
+    "business_name": "One Hour Heating & Air Conditioning of Charlotte",
+    "city": "Charlotte",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "a1041ccd6761",
+    "notes": [
+      "Touch 1 attempted \n call c4c0df29ffc2 + SMS 2124ea640d47. BOTH QUEUED, NOT DELIVERED. No conversation, no outcome. Script v2. Touch 2 due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+17047034220",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "NC",
+    "website": "onehourheatandair.com"
+  },
+  "ab1e3ada3cb6": {
+    "business_name": "Benjamin Franklin Plumbing of Grove City",
+    "city": "Grove City",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "ab1e3ada3cb6",
+    "notes": [
+      "Touch 1 attempted \n call 8a538d6e8774 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+16148508053",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "OH",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "b1f65708da73": {
+    "business_name": "One Hour Heating & Air Conditioning of Lakeland",
+    "city": "Lakeland",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "b1f65708da73",
+    "notes": [
+      "Touch 1 attempted \n call 3b706c7ef84b QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+18632130644",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "onehourheatandair.com"
+  },
+  "b2b2f041e029": {
+    "business_name": "One Hour Heating & Air Conditioning of Ocean Isle Beach",
+    "city": "Ocean Isle Beach",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "b2b2f041e029",
+    "notes": [
+      "Touch 1 attempted \n call 232034f8bd36 QUEUED, NOT DELIVERED (no voice integration). No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+19106320023",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "NC",
+    "website": "onehourheatandair.com"
+  },
+  "b2e3417b0392": {
+    "business_name": "Benjamin Franklin Plumbing of Orlando (loc 3)",
+    "city": "Orlando",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "b2e3417b0392",
+    "notes": [
+      "HELD, NOT DIALLED \n Orlando FL cluster sibling of 646577c82fe5. Deliberately left in NEW pending ownership qualification. See cluster note on the primary."
+    ],
+    "owner_name": "",
+    "phone": "+13212000812",
+    "score": 3,
+    "stage": "NEW",
+    "state": "FL",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "b66df2d4fc7b": {
+    "business_name": "Benjamin Franklin Plumbing of Plano",
+    "city": "Plano",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "b66df2d4fc7b",
+    "notes": [
+      "Touch 1 attempted \n call bd64f3d2343f QUEUED, NOT DELIVERED. Central time zone dial window. No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+19724247547",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "TX",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "c14ebff4c88d": {
+    "business_name": "Benjamin Franklin Plumbing of Tampa",
+    "city": "Tampa",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "c14ebff4c88d",
+    "notes": [
+      "Touch 1 attempted \n call 8869aa2de09c + SMS ab5ee644332c. BOTH QUEUED, NOT DELIVERED. No conversation, no outcome. Script v2. Touch 2 due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+18133147049",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "FL",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "c7aeaf150ef2": {
+    "business_name": "One Hour Heating & Air Conditioning of Alpharetta",
+    "city": "Alpharetta",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "c7aeaf150ef2",
+    "notes": [
+      "Touch 1 attempted \n call e25eaa09e3f9 + SMS 2410c72018e9. BOTH QUEUED, NOT DELIVERED. No conversation, no outcome. Script v2. Touch 2 due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+14046894168",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "GA",
+    "website": "onehourheatandair.com"
+  },
+  "caae79709b0d": {
+    "business_name": "One Hour Heating & Air Conditioning of Frisco",
+    "city": "Frisco",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "caae79709b0d",
+    "notes": [
+      "Touch 1 attempted \n call bfd063d6ea04 + SMS fd276f50a43b. BOTH QUEUED, NOT DELIVERED. Central time zone dial window. No conversation, no outcome. Touch 2 due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+19458006305",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "TX",
+    "website": "onehourheatandair.com"
+  },
+  "ceb0dc8276f7": {
+    "business_name": "Benjamin Franklin Plumbing of McKinney",
+    "city": "McKinney",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "ceb0dc8276f7",
+    "notes": [
+      "Touch 1 attempted \n call 25cb3a5749a3 QUEUED, NOT DELIVERED. Central time zone dial window. No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+19723018387",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "TX",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "f881ff372184": {
+    "business_name": "Benjamin Franklin Plumbing of Houston",
+    "city": "Houston",
+    "email": "",
+    "franchise_brand": "Benjamin Franklin Plumbing",
+    "id": "f881ff372184",
+    "notes": [
+      "Touch 1 attempted \n call 6bd751386941 + SMS 3605517e078a. BOTH QUEUED, NOT DELIVERED. Central time zone dial window. No conversation, no outcome. Touch 2 due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+12813940378",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "TX",
+    "website": "benjaminfranklinplumbing.com"
+  },
+  "f97dfa77f280": {
+    "business_name": "One Hour Heating & Air Conditioning of Corpus Christi",
+    "city": "Corpus Christi",
+    "email": "",
+    "franchise_brand": "One Hour Heating & Air Conditioning",
+    "id": "f97dfa77f280",
+    "notes": [
+      "Touch 1 attempted \n call 52038c809aba QUEUED, NOT DELIVERED. Central time zone dial window. No conversation, no outcome. Script v2. Touch 2 (SMS) due day 3."
+    ],
+    "owner_name": "",
+    "phone": "+13612453945",
+    "score": 3,
+    "stage": "CONTACTED",
+    "state": "TX",
+    "website": "onehourheatandair.com"
+  }
+}

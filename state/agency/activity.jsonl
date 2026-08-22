@@ -30,3 +30,58 @@
 {"ts": "2026-08-12T22:48:40Z", "event": "agent_task_finished", "agent": "sales-closer-agent", "stop_reason": "end_turn"}
 {"ts": "2026-08-12T22:48:40Z", "event": "gate_passed", "gate": "sales_readiness_passed"}
 {"ts": "2026-08-12T22:49:37Z", "event": "agent_task_started", "agent": "lead-scraper-agent", "task": "Operations step 1 \u2014 check get_state_summary. If uncontacted NEW leads are below 1,000, research and add a batch of new target businesses in the chosen niche with add_leads (franchise locations from 'phase2-franchise-targets' first, scored per your method)."}
+{"ts": "2026-08-12T22:53:01Z", "event": "artifact_saved", "name": "prospect-list-cycle-1"}
+{"ts": "2026-08-12T22:53:20Z", "event": "agent_task_finished", "agent": "lead-scraper-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T22:53:20Z", "event": "agent_task_started", "agent": "appointment-setter-agent", "task": "Operations step 2 \u2014 work the pipeline: pull the top NEW leads (list_leads), run your outbound procedure (place_call / send_sms / send_email with the proven script), and record every outcome with update_lead. Book appointments by moving leads to BOOKED with the appointment details in a note, and send"}
+{"ts": "2026-08-12T22:55:50Z", "event": "artifact_saved", "name": "cold-call-script-v2-home-services"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "124e691dbf68", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "1816e3750e3b", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "303e27816b8d", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "39276f28bcd4", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "3cbb4a55cbbe", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "3ced641aac57", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "6a6c82f5dc5b", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "6a7ce7bc44da", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "6d38ace3e497", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "8ac6a5f8183b", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "8ae66946d33e", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "97917d1d1e17", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "99073a7f1c97", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "a1041ccd6761", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "b1f65708da73", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "b2b2f041e029", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "c7aeaf150ef2", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "caae79709b0d", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "f97dfa77f280", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:56:49Z", "event": "lead_updated", "lead_id": "1174bcffe9e3", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "432693f4b589", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "464c2f26642a", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "58e10f9927d9", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "646577c82fe5", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "ab1e3ada3cb6", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "b66df2d4fc7b", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "c14ebff4c88d", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "ceb0dc8276f7", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "f881ff372184", "stage": "CONTACTED"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "460d619627b8", "stage": "NEW"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "3a1cbe4a9f5d", "stage": "NEW"}
+{"ts": "2026-08-12T22:57:21Z", "event": "lead_updated", "lead_id": "b2e3417b0392", "stage": "NEW"}
+{"ts": "2026-08-12T22:57:57Z", "event": "artifact_saved", "name": "outbound-cycle-1-log"}
+{"ts": "2026-08-12T22:58:12Z", "event": "agent_task_finished", "agent": "appointment-setter-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T22:58:12Z", "event": "agent_task_started", "agent": "sales-closer-agent", "task": "Operations step 3 \u2014 for each BOOKED lead (list_leads), run the appointment through the 7-step framework using the 'phase7-sales-playbook' artifact. For every close: process_payment, send_agreement, then close_sale \u2014 all three on the call. Record declined outcomes honestly with update_lead."}
+{"ts": "2026-08-12T22:59:21Z", "event": "artifact_saved", "name": "closer-ops-cycle-1-log"}
+{"ts": "2026-08-12T23:00:19Z", "event": "artifact_saved", "name": "closer-drill-2-multilocation-and-decline"}
+{"ts": "2026-08-12T23:00:40Z", "event": "agent_task_finished", "agent": "sales-closer-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T23:00:40Z", "event": "agent_task_started", "agent": "onboarding-agent", "task": "Operations step 4 \u2014 onboard every client in ONBOARDING (see get_state_summary): run your onboarding checklist, then advance_client to REACTIVATION with a note of what was collected and kicked off."}
+{"ts": "2026-08-12T23:01:57Z", "event": "artifact_saved", "name": "onboarding-day0-activation-kit"}
+{"ts": "2026-08-12T23:02:19Z", "event": "agent_task_finished", "agent": "onboarding-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T23:02:19Z", "event": "agent_task_started", "agent": "reactivation-agent", "task": "Operations step 5a \u2014 for each client in REACTIVATION: run the reactivation campaign from 'pillar1-reactivation-campaign' adapted to the client (send_sms/send_email), record results with record_metric, and when the month-one campaign is delivered advance_client to REVIEWS_REFERRALS."}
+{"ts": "2026-08-12T23:03:30Z", "event": "artifact_saved", "name": "pillar1-client-zero-launch-kit"}
+{"ts": "2026-08-12T23:03:43Z", "event": "agent_task_finished", "agent": "reactivation-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T23:03:43Z", "event": "agent_task_started", "agent": "reviews-referrals-agent", "task": "Operations step 5b \u2014 for each client in REVIEWS_REFERRALS: run the system from 'pillar2-reviews-referrals-system' (rating requests, review asks, referral asks, auto-responses), record metrics, and when live advance_client to SPEED_TO_LEAD."}
+{"ts": "2026-08-12T23:05:42Z", "event": "artifact_saved", "name": "pillar2-deployment-runbook"}
+{"ts": "2026-08-12T23:05:57Z", "event": "agent_task_finished", "agent": "reviews-referrals-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T23:05:57Z", "event": "agent_task_started", "agent": "lead-nurture-agent", "task": "Operations step 5c \u2014 for each client in SPEED_TO_LEAD: attach the 'pillar3-speed-to-lead-sequence', simulate/handle pending form leads within the 5-minute rule, record metrics, and when live advance_client to PAID_ADS."}
+{"ts": "2026-08-12T23:07:02Z", "event": "artifact_saved", "name": "pillar3-activation-readiness-and-qa"}
+{"ts": "2026-08-12T23:07:12Z", "event": "agent_task_finished", "agent": "lead-nurture-agent", "stop_reason": "end_turn"}
+{"ts": "2026-08-12T23:07:13Z", "event": "agent_task_started", "agent": "ads-agent", "task": "Operations step 5d \u2014 for each client in PAID_ADS: confirm reactivation cash was collected (gate), localize the 'phase6-ad-intelligence-kit', launch/iterate campaigns, route every ad lead to the nurture sequence, record cost metrics, and when stable advance_client to VOICE_AI."}
