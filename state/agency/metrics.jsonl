@@ -1,0 +1,57 @@
+{"ts": "2026-08-12T21:57:10Z", "metric": "markets_ranked", "value": 3.0, "context": "phase1-niche-selection"}
+{"ts": "2026-08-12T21:57:12Z", "metric": "est_weeks_to_first_client", "value": 3.0, "context": "phase1-niche-selection"}
+{"ts": "2026-08-12T22:02:20Z", "metric": "franchise_brands_identified", "value": 10.0, "context": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:02:20Z", "metric": "brands_with_sourced_location_count", "value": 6.0, "context": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:02:20Z", "metric": "brands_with_verified_community_evidence", "value": 4.0, "context": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:02:20Z", "metric": "brands_flagged_unverified", "value": 4.0, "context": "phase2-franchise-targets"}
+{"ts": "2026-08-12T22:06:01Z", "metric": "pillar1_campaign_built", "value": 1.0, "context": "phase3 \u00b7 home services (HVAC/plumbing/electrical)"}
+{"ts": "2026-08-12T22:06:01Z", "metric": "reactivation_message_variants_written", "value": 27.0, "context": "phase3 \u00b7 3-day SMS+email x 3 trades, YES/NO handlers, objection micro-handlers"}
+{"ts": "2026-08-12T22:12:32Z", "metric": "pillar2_messages_built", "value": 21.0, "context": "phase4_pillar2_reviews_referrals"}
+{"ts": "2026-08-12T22:12:32Z", "metric": "pillar2_target_reviews_per_client_month", "value": 25.0, "context": "phase4_pillar2_reviews_referrals"}
+{"ts": "2026-08-12T22:12:32Z", "metric": "pillar2_target_referral_leads_per_client_month", "value": 7.0, "context": "phase4_pillar2_reviews_referrals"}
+{"ts": "2026-08-12T22:12:32Z", "metric": "pillar2_target_negatives_intercepted_per_client_month", "value": 13.0, "context": "phase4_pillar2_reviews_referrals"}
+{"ts": "2026-08-12T22:19:29Z", "metric": "pillar3_sequence_messages_built", "value": 5.0, "context": "phase5_speed_to_lead_master_build"}
+{"ts": "2026-08-12T22:19:29Z", "metric": "response_time_sla_seconds", "value": 300.0, "context": "phase5_speed_to_lead_master_build"}
+{"ts": "2026-08-12T22:24:05Z", "metric": "competitor_ads_analyzed", "value": 6.0, "context": "phase6-ad-intelligence"}
+{"ts": "2026-08-12T22:24:05Z", "metric": "ad_variations_built", "value": 3.0, "context": "phase6-ad-intelligence"}
+{"ts": "2026-08-12T22:48:19Z", "metric": "drill_mode_selftest_score", "value": 9.1, "context": "phase7-sales-readiness"}
+{"ts": "2026-08-12T22:48:19Z", "metric": "framework_steps_completed_in_drill", "value": 7.0, "context": "phase7-sales-readiness"}
+{"ts": "2026-08-12T22:48:19Z", "metric": "drill_temperature_check_final_score", "value": 9.5, "context": "phase7-sales-readiness"}
+{"ts": "2026-08-12T22:52:15Z", "metric": "leads_added_this_cycle", "value": 32.0, "context": "ops-cycle-1 scrape | brands 1-2 | FL/GA/NC/OH/TX"}
+{"ts": "2026-08-12T22:52:17Z", "metric": "uncontacted_new_leads", "value": 32.0, "context": "ops-cycle-1 | KPI floor 1000 | SHORTFALL 968"}
+{"ts": "2026-08-12T22:52:20Z", "metric": "pct_franchise_affiliated", "value": 100.0, "context": "ops-cycle-1 | 32/32 franchise locations"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "dials_attempted", "value": 29.0, "context": "ops-cycle-1 outbound"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "dials_connected", "value": 0.0, "context": "ops-cycle-1 outbound \n all queued, voice integration not configured"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "sms_touches_attempted", "value": 8.0, "context": "ops-cycle-1 deliverability pilot"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "emails_sent", "value": 0.0, "context": "ops-cycle-1 \n blocked, zero email addresses on the list"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "live_contacts", "value": 0.0, "context": "ops-cycle-1 outbound"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "contact_rate", "value": 0.0, "context": "ops-cycle-1 \n 0 of 29"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "appointments_booked", "value": 0.0, "context": "ops-cycle-1 \n no conversations occurred, nothing to book"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "booking_rate", "value": 0.0, "context": "ops-cycle-1"}
+{"ts": "2026-08-12T22:57:21Z", "metric": "leads_held_cluster_dedupe", "value": 3.0, "context": "ops-cycle-1 \n Augusta x1, Orlando x2"}
+{"ts": "2026-08-12T22:58:45Z", "metric": "booked_appointments_available", "value": 0.0, "context": "ops-cycle-1 / sales-closer-agent"}
+{"ts": "2026-08-12T22:58:45Z", "metric": "sales_calls_run", "value": 0.0, "context": "ops-cycle-1 / sales-closer-agent"}
+{"ts": "2026-08-12T22:58:45Z", "metric": "closes", "value": 0.0, "context": "ops-cycle-1 / sales-closer-agent"}
+{"ts": "2026-08-12T22:58:45Z", "metric": "cash_collected_on_call", "value": 0.0, "context": "ops-cycle-1 / sales-closer-agent"}
+{"ts": "2026-08-12T23:00:24Z", "metric": "drill_framework_adherence", "value": 9.3, "context": "drill-2 multilocation close (constructed, not live)"}
+{"ts": "2026-08-12T23:00:24Z", "metric": "drill_framework_adherence", "value": 9.0, "context": "drill-2 clean-no / decline path (constructed, not live)"}
+{"ts": "2026-08-12T23:00:24Z", "metric": "leads_fabricated_as_closed_or_declined", "value": 0.0, "context": "ops-cycle-1 integrity check"}
+{"ts": "2026-08-12T23:02:02Z", "metric": "clients_in_onboarding", "value": 0.0, "context": "ops-cycle-1 / onboarding-agent"}
+{"ts": "2026-08-12T23:02:02Z", "metric": "clients_advanced_to_reactivation", "value": 0.0, "context": "ops-cycle-1 / onboarding-agent"}
+{"ts": "2026-08-12T23:02:02Z", "metric": "accesses_collected_pct", "value": 0.0, "context": "ops-cycle-1 / no clients exist to collect from"}
+{"ts": "2026-08-12T23:02:02Z", "metric": "onboarding_readiness_artifacts_built", "value": 1.0, "context": "onboarding-day0-activation-kit"}
+{"ts": "2026-08-12T23:02:49Z", "metric": "clients_in_reactivation", "value": 0.0, "context": "ops-step-5a \u2014 no clients signed; pillar 1 fulfillment idle, not blocked"}
+{"ts": "2026-08-12T23:02:49Z", "metric": "reactivation_campaigns_sent", "value": 0.0, "context": "ops-step-5a \u2014 0 sends; pre-flight gates 1/3/5 unsatisfiable with no client"}
+{"ts": "2026-08-12T23:02:49Z", "metric": "pillar1_deploy_ready", "value": 1.0, "context": "master campaign BUILT; launch kit staged for &lt;24h close-to-Day-1"}
+{"ts": "2026-08-12T23:02:49Z", "metric": "upstream_pipeline_closed", "value": 0.0, "context": "29 CONTACTED / 0 BOOKED / 0 CLOSED \u2014 binding constraint sits with outbound+sales, not fulfillment"}
+{"ts": "2026-08-12T23:04:40Z", "metric": "clients_in_reviews_referrals", "value": 0.0, "context": "ops-step-5b"}
+{"ts": "2026-08-12T23:04:40Z", "metric": "pillar2_clients_activated", "value": 0.0, "context": "ops-step-5b"}
+{"ts": "2026-08-12T23:04:40Z", "metric": "sms_variable_overflow_defects_found", "value": 3.0, "context": "pillar2-qa-pass"}
+{"ts": "2026-08-12T23:04:40Z", "metric": "pillar2_deployment_readiness", "value": 1.0, "context": "pillar2-runbook-v1.1"}
+{"ts": "2026-08-12T23:07:02Z", "metric": "clients_in_speed_to_lead", "value": 0.0, "context": "ops-step-5c \u2014 no-op, no clients exist agency-wide"}
+{"ts": "2026-08-12T23:07:02Z", "metric": "pillar3_leads_processed", "value": 0.0, "context": "ops-step-5c \u2014 zero pending form leads; none simulated (no synthetic sends to outbox)"}
+{"ts": "2026-08-12T23:07:02Z", "metric": "pillar3_qa_defects_fixed", "value": 2.0, "context": "M2 over 160 at max variables; STOP missing from 5 of 9 SMS"}
+{"ts": "2026-08-12T23:07:47Z", "metric": "clients_in_paid_ads", "value": 0.0, "context": "ops-5d \u00b7 2026-08-12 \u00b7 no clients exist; gate \u00a75.1 unreachable"}
+{"ts": "2026-08-12T23:07:47Z", "metric": "ad_spend_usd", "value": 0.0, "context": "ops-5d \u00b7 no live campaigns"}
+{"ts": "2026-08-12T23:07:50Z", "metric": "clients_advanced_to_voice_ai", "value": 0.0, "context": "ops-5d \u00b7 nothing eligible to advance"}
+{"ts": "2026-08-12T23:07:50Z", "metric": "ad_leads_routed_to_nurture", "value": 0.0, "context": "ops-5d \u00b7 no campaigns, no leads generated"}

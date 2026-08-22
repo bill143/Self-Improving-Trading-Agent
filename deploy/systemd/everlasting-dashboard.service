@@ -1,0 +1,21 @@
+[Unit]
+Description=Everlasting Care compliance dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=everlasting
+WorkingDirectory=/opt/everlasting/repo
+EnvironmentFile=/opt/everlasting/repo/.env
+Environment=EC_STATE_DIR=/opt/everlasting/state
+ExecStart=/opt/everlasting/.local/bin/uv run --extra compliance uvicorn everlasting_compliance.web.app:app --host 127.0.0.1 --port 8080
+Restart=on-failure
+RestartSec=5
+# hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/opt/everlasting/state
+
+[Install]
+WantedBy=multi-user.target
