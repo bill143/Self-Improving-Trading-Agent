@@ -1,0 +1,24 @@
+{
+  "niche": "Residential home services \u2014 HVAC, plumbing & electrical contractors (roofing/solar adjacent), US, owner-operated, 5\u201350 technicians",
+  "niche_rationale": "F1 (physical, location-based walk-in/service-area businesses): PASS \u2014 contractors with a shop, truck fleet and geo-locked service radius. F2 (\u2265$500/transaction or \u2265$100/mo recurring): PASS by 10x\u201325x \u2014 2025 data shows full HVAC replacement averaging $5,000\u2013$12,500 installed and full roof replacement averaging ~$9,500\u2013$9,600 nationally, so one recovered job pays for a year of retainer. F3 (other agencies already at $100K\u2013$500K/mo): PASS \u2014 home services is the most colonised agency vertical in the US, with named vertical specialists including Scorpion, Blue Corona (acquired by EverCommerce), Hook Agency and Rival Digital, plus Josh Nelson's Seven Figure Agency community built explicitly around home-service agencies at seven figures; competition is validation. Tiebreakers over med spas (#2) and boutique fitness (#3): owner Bill runs O'Neill Contractors and sells as a peer contractor rather than a marketer, with existing subcontractor/trade relationships as a warm-intro network no competitor can buy (PROVISIONAL pending questionnaire); highest ticket on the board makes the Pillar-1 reactivation proof immediate; and home services has by far the densest supply of 30+ location franchise \"ships\" with active franchisee peer networks for Phase 2 referral compounding.",
+  "owner_context": {
+    "background": "Owner/operator background in construction contracting (O'Neill Contractors); works with government/federal construction bidding (SAM.gov/GovTribe). PROVISIONAL \u2014 inferred, pending owner questionnaire.",
+    "budget_for_tools": "unspecified \u2014 assume lean start (<$500/mo) until confirmed",
+    "business_connections": "Likely subcontractor/trade relationships via O'Neill Contractors (unconfirmed)",
+    "company": "O'Neill Contractors",
+    "country": "United States",
+    "email": "bill@oneillcontractors.com",
+    "industry_familiarity": "Construction trades: HVAC, roofing, plumbing, solar subcontractor networks (provisional)",
+    "name": "Bill",
+    "status": "PROVISIONAL \u2014 owner questionnaire not yet returned; rankings must state which assumptions matter"
+  },
+  "phase_gates": {
+    "ad_intelligence_built": true,
+    "franchises_targeted": true,
+    "niche_selected": true,
+    "pillar1_reactivation_built": true,
+    "pillar2_reviews_referrals_built": true,
+    "pillar3_speed_to_lead_built": true,
+    "sales_readiness_passed": true
+  }
+}

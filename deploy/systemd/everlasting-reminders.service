@@ -1,0 +1,12 @@
+[Unit]
+Description=Everlasting Care compliance reminder sweep (deadline reminders)
+After=network.target
+
+[Service]
+Type=oneshot
+User=everlasting
+WorkingDirectory=/opt/everlasting/repo
+EnvironmentFile=/opt/everlasting/repo/.env
+Environment=EC_STATE_DIR=/opt/everlasting/state
+ExecStart=/opt/everlasting/.local/bin/uv run --extra compliance python -c "from everlasting_compliance.db import DB; from everlasting_compliance import reminders; import json; print(json.dumps(reminders.sweep(DB()), default=str))"
+NoNewPrivileges=true
