@@ -73,6 +73,22 @@ free public endpoints, so API keys are optional.
   `hermes` CLI as a subprocess, parses the returned single-variable hypothesis,
   and applies it. Falls back gracefully if `hermes` is not on `PATH`.
 
+## Firecrawl MCP server
+
+The repo ships a project-scoped MCP config (`.mcp.json`) that registers the
+[Firecrawl MCP server](https://github.com/firecrawl/firecrawl-mcp-server) —
+web search, scraping, and crawling tools for any MCP-capable agent working on
+this repo (e.g. Claude Code, or an agent driving the reflection cycle). Useful
+for researching news, sentiment, and docs beyond what the built-in adapters
+fetch.
+
+- Runs via `npx -y firecrawl-mcp` (Node required); MCP clients that honour
+  `.mcp.json` pick it up automatically.
+- Set `FIRECRAWL_API_KEY` in your environment (see `.env.example`) for the
+  full tool set. Without a key it runs on the keyless free tier —
+  rate-limited `scrape`, `search`, and `parse` only.
+- Self-hosting Firecrawl? Point `FIRECRAWL_API_URL` at your instance.
+
 ## Tests
 
 ```bash
