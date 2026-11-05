@@ -85,3 +85,18 @@ A `Dockerfile` is included; it builds with `uv` and runs the worker in paper
 mode with state at `/app/state`. Mount a persistent volume at `/app/state` so
 trades and strategy history survive restarts. Going live is intentionally **not**
 a supported path in this build.
+
+### Fly.io
+
+Deployed as the worker app `hermes-trading-billy-ai` (org `Billy_AI`, region `iad`)
+with a 1 GB volume `hermes_state` at `/app/state`. On first boot the default
+`goal.yaml`/`strategy.yaml` are seeded from `/app/seed`; evolved state is never
+overwritten. Binance geo-blocks US hosts, so `fly.toml` sets
+`EXCHANGE_ID=binanceus,okx,kraken` (a failover chain).
+
+```bash
+fly deploy                     # redeploy after changes
+fly logs                       # live worker output
+fly ssh console -C "cat /app/state/heartbeat.json"
+fly secrets set NEWS_API_KEY=... EXCHANGE_API_KEY=... EXCHANGE_API_SECRET=...
+```

@@ -1,5 +1,5 @@
 # Fly.io config: background paper-trading worker (no public HTTP service).
-app = "hermes-trading"
+app = "hermes-trading-billy-ai"
 primary_region = "iad"
 
 [build]
@@ -9,6 +9,7 @@ primary_region = "iad"
   HERMES_TRADING_MODE = "paper"
   HERMES_TRADING_STATE_DIR = "/app/state"
   HERMES_TRADING_SEED_DIR = "/app/seed"
+  EXCHANGE_ID = "binanceus,okx,kraken"
 
 # Persistent state: trades, strategy versions, hypotheses, position.
 [mounts]

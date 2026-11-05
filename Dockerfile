@@ -1,21 +1,23 @@
 FROM python:3.11-slim
 WORKDIR /app
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
-
-# uv for fast, reproducible installs
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-ENV PATH="/root/.local/bin:${PATH}" \
-    UV_COMPILE_BYTECODE=1 \
+# uv (pinned) for fast, reproducible installs from uv.lock
+COPY --from=ghcr.io/astral-sh/uv:0.9.7 /uv /uvx /bin/
+ENV UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy \
     PYTHONUNBUFFERED=1
 
+# Optional build secret "ca": extra CA bundle for builds behind a TLS-inspecting
+# proxy. Used only during install; never written into the image.
 COPY pyproject.toml uv.lock README.md ./
-RUN uv sync --frozen --no-dev --no-install-project
+RUN --mount=type=secret,id=ca,required=false \
+    if [ -s /run/secrets/ca ]; then export SSL_CERT_FILE=/run/secrets/ca; fi; \
+    uv sync --frozen --no-dev --no-install-project
 
 COPY hermes_trading ./hermes_trading
-RUN uv sync --frozen --no-dev
+RUN --mount=type=secret,id=ca,required=false \
+    if [ -s /run/secrets/ca ]; then export SSL_CERT_FILE=/run/secrets/ca; fi; \
+    uv sync --frozen --no-dev
 
 # Default goal/strategy live in /app/seed; they are copied into the state dir
 # on first boot so a fresh persistent volume at /app/state starts populated.
