@@ -1,0 +1,23 @@
+# Fly.io config: background paper-trading worker (no public HTTP service).
+app = "hermes-trading"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  HERMES_TRADING_MODE = "paper"
+  HERMES_TRADING_STATE_DIR = "/app/state"
+  HERMES_TRADING_SEED_DIR = "/app/seed"
+
+# Persistent state: trades, strategy versions, hypotheses, position.
+[mounts]
+  source = "hermes_state"
+  destination = "/app/state"
+
+[[restart]]
+  policy = "always"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
