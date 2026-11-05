@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hermes Trading</title>
+<style>
+:root{
+  --bg:#f6f7f9;--card:#fff;--ink:#14161a;--muted:#5d6470;--line:#e4e7ec;
+  --accent:#4f46e5;--up:#0f8a5f;--down:#c2364a;--warn:#b7791f;--chip:#eef0f4;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#0f1115;--card:#171a20;--ink:#e8eaee;--muted:#9aa1ad;--line:#272b33;
+  --accent:#8b85ff;--up:#34c08b;--down:#f0687b;--warn:#e0a84a;--chip:#222630;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 48px}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:18px}
+h1{font-size:20px;margin:0;font-weight:650;letter-spacing:-.01em}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;
+  background:var(--chip);color:var(--muted);font-size:13px;font-weight:550}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.ok .dot{background:var(--up)} .bad .dot{background:var(--down)}
+.ok{color:var(--up)} .bad{color:var(--down)}
+.spacer{flex:1}
+.updated{color:var(--muted);font-size:13px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.span2{grid-column:span 2}.span4{grid-column:1/-1}
+.label{color:var(--muted);font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.big{font-size:26px;font-weight:650;margin-top:4px;font-variant-numeric:tabular-nums}
+.sub{color:var(--muted);font-size:13px;margin-top:2px}
+.up{color:var(--up)}.down{color:var(--down)}
+.bar{position:relative;height:8px;border-radius:4px;background:var(--chip);margin-top:12px}
+.bar i{position:absolute;top:-4px;width:3px;height:16px;border-radius:2px;background:var(--ink)}
+.bar b{position:absolute;top:0;bottom:0;left:0;border-radius:4px 0 0 4px;background:color-mix(in srgb,var(--up) 35%,transparent)}
+svg{display:block;width:100%;height:150px}
+h2{font-size:15px;margin:0 0 10px;font-weight:650}
+table{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.scroll{overflow-x:auto}
+.empty{color:var(--muted);font-size:14px;padding:6px 0}
+dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:14px}
+dt{color:var(--muted)} dd{margin:0;font-variant-numeric:tabular-nums}
+.change{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.change:last-child{border-bottom:0}
+.change .meta{color:var(--muted);font-size:12.5px}
+.note{margin-top:22px;color:var(--muted);font-size:13px}
+.err{background:color-mix(in srgb,var(--down) 12%,var(--card));border-color:var(--down);display:none}
+@media (max-width:820px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.span2{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Hermes Trading</h1>
+    <span class="pill" id="health"><span class="dot"></span><span>Connecting…</span></span>
+    <span class="pill" id="mode">Paper mode</span>
+    <span class="spacer"></span>
+    <span class="updated" id="updated"></span>
+  </header>
+
+  <div class="card span4 err" id="error"></div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="label" id="asset">Price</div>
+      <div class="big" id="price">—</div>
+      <div class="sub" id="exchange"></div>
+    </div>
+    <div class="card">
+      <div class="label">RSI signal</div>
+      <div class="big" id="rsi">—</div>
+      <div class="sub" id="rsi-sub"></div>
+      <div class="bar"><b id="rsi-zone"></b><i id="rsi-mark" style="left:50%"></i></div>
+    </div>
+    <div class="card">
+      <div class="label">Position</div>
+      <div class="big" id="pos">—</div>
+      <div class="sub" id="pos-sub"></div>
+    </div>
+    <div class="card">
+      <div class="label">Total return</div>
+      <div class="big" id="ret">—</div>
+      <div class="sub" id="ret-sub"></div>
+    </div>
+
+    <div class="card span4">
+      <h2>Price — last 2 hours (1-minute bars)</h2>
+      <svg id="chart" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Price chart"></svg>
+    </div>
+
+    <div class="card span2">
+      <h2>Performance vs goal</h2>
+      <dl id="perf"></dl>
+    </div>
+    <div class="card span2">
+      <h2>Current strategy <span class="pill" id="sver"></span></h2>
+      <dl id="strategy"></dl>
+    </div>
+
+    <div class="card span4">
+      <h2>Closed trades</h2>
+      <div class="scroll" id="trades"></div>
+    </div>
+
+    <div class="card span4">
+      <h2>Strategy changes (self-improvement log)</h2>
+      <div id="changes"></div>
+    </div>
+  </div>
+
+  <p class="note">Read-only view. Paper trading only — no real money is used. Refreshes every 15 seconds.</p>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = (v) => v == null ? "—" : "$" + Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+const pct = (v, d=2) => v == null || isNaN(v) ? "—" : (v >= 0 ? "+" : "") + (v*100).toFixed(d) + "%";
+const dd = (v, d=2) => v == null || isNaN(v) ? "—" : (v*100).toFixed(d) + "%";
+const cls = (v) => v > 0 ? "up" : v < 0 ? "down" : "";
+const when = (ts) => ts ? new Date(ts*1000).toLocaleString([], {month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}) : "—";
+const ago = (s) => s == null ? "never" : s < 90 ? Math.round(s) + "s ago" : s < 5400 ? Math.round(s/60) + " min ago" : Math.round(s/3600) + " h ago";
+const LABELS = {
+  "entry.threshold":"Buy when RSI below", "exit.rsi_take_profit":"Sell when RSI above",
+  "exit.max_hold_minutes":"Max hold (minutes)", "stop_loss_pct":"Stop loss (%)",
+  "position_size_r":"Position size (R)", "entry.direction":"Direction", "entry.indicator":"Indicator"
+};
+const REASONS = {stop_loss:"Stop loss", take_profit:"Take profit", max_hold:"Time limit"};
+
+function flatten(obj, prefix="", out={}) {
+  for (const [k, v] of Object.entries(obj || {})) {
+    const key = prefix ? prefix + "." + k : k;
+    if (v && typeof v === "object" && !Array.isArray(v)) flatten(v, key, out); else out[key] = v;
+  }
+  return out;
+}
+
+function chart(closes, entry) {
+  const svg = $("chart");
+  if (!closes || closes.length < 2) { svg.innerHTML = ""; return; }
+  const lo = Math.min(...closes, entry ?? Infinity), hi = Math.max(...closes, entry ?? -Infinity);
+  const pad = (hi - lo) * 0.08 || 1, min = lo - pad, max = hi + pad;
+  const x = (i) => (i / (closes.length - 1)) * 1000, y = (v) => 150 - ((v - min) / (max - min)) * 150;
+  const pts = closes.map((v, i) => x(i).toFixed(1) + "," + y(v).toFixed(1)).join(" ");
+  const color = closes.at(-1) >= closes[0] ? "var(--up)" : "var(--down)";
+  let html = `<polygon points="0,150 ${pts} 1000,150" fill="${color}" opacity=".08"/>` +
+             `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" vector-effect="non-scaling-stroke"/>`;
+  if (entry != null) html += `<line x1="0" x2="1000" y1="${y(entry)}" y2="${y(entry)}" stroke="var(--accent)" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"/>`;
+  svg.innerHTML = html;
+}
+
+function render(d) {
+  const hb = d.heartbeat || {}, pos = d.position, s = d.summary || {}, g = d.goal || {};
+  const h = $("health");
+  h.className = "pill " + (d.healthy ? "ok" : "bad");
+  h.lastElementChild.textContent = d.healthy ? "Running" : "Not responding";
+  $("mode").textContent = (hb.mode || "paper") === "paper" ? "Paper mode" : hb.mode;
+  $("updated").textContent = "Last check " + ago(d.heartbeat_age_s);
+
+  $("asset").textContent = hb.asset || "Price";
+  $("price").textContent = money(hb.last_price);
+  $("exchange").textContent = hb.exchange ? "via " + hb.exchange : "";
+
+  const r = hb.rsi, th = hb.entry_threshold;
+  $("rsi").textContent = r == null ? "—" : r.toFixed(1);
+  $("rsi-sub").textContent = th == null ? "" : (r != null && r < th ? "Below " + th + " — buy signal" : "Buys when below " + th);
+  $("rsi-mark").style.left = Math.max(0, Math.min(100, r ?? 50)) + "%";
+  $("rsi-zone").style.width = Math.max(0, Math.min(100, th ?? 0)) + "%";
+
+  if (pos) {
+    const unreal = hb.last_price ? (hb.last_price - pos.entry_price) / pos.entry_price : null;
+    $("pos").innerHTML = `<span class="${cls(unreal)}">Long ${esc(pct(unreal))}</span>`;
+    $("pos-sub").textContent = "Entry " + money(pos.entry_price) + " · stop " + money(pos.stop_price);
+  } else {
+    $("pos").textContent = "Flat";
+    $("pos-sub").textContent = "Waiting for a buy signal";
+  }
+
+  $("ret").innerHTML = `<span class="${cls(s.realised_return)}">${esc(pct(s.realised_return))}</span>`;
+  $("ret-sub").textContent = (s.n_trades || 0) + " closed trade" + (s.n_trades === 1 ? "" : "s");
+
+  chart(hb.closes, pos ? pos.entry_price : null);
+
+  $("perf").innerHTML = [
+    ["Return", pct(s.realised_return), "target " + pct(g.target_return_30d, 0) + " / 30 days"],
+    ["Max drawdown", dd(s.max_drawdown), "limit " + dd(g.max_drawdown, 0)],
+    ["Sharpe ratio", s.sharpe == null ? "—" : Number(s.sharpe).toFixed(2), "goal ≥ " + (g.min_sharpe ?? "—")],
+    ["Score", s.score == null ? "—" : Number(s.score).toFixed(3), "range −1 to +1"],
+    ["Learns every", (g.reflection_every ?? "—") + " trades", "one setting changed at a time"],
+  ].map(([k, v, n]) => `<dt>${esc(k)}</dt><dd>${esc(v)} <span class="sub">· ${esc(n)}</span></dd>`).join("");
+
+  const flat = flatten(d.strategy); delete flat.version;
+  $("sver").textContent = "v" + (d.strategy?.version ?? "?");
+  $("strategy").innerHTML = Object.entries(flat).map(([k, v]) =>
+    `<dt>${esc(LABELS[k] || k)}</dt><dd>${esc(v)}</dd>`).join("");
+
+  const t = d.trades || [];
+  $("trades").innerHTML = t.length ? `<table><thead><tr><th>Closed</th><th>Entry</th><th>Exit</th><th>Return</th><th>Why</th><th>Market</th><th>Strategy</th></tr></thead><tbody>` +
+    t.map((x) => `<tr><td>${esc(when(x.exit_time))}</td><td>${esc(money(x.entry_price))}</td><td>${esc(money(x.exit_price))}</td>` +
+      `<td class="${cls(x.return_pct)}">${esc(pct(x.return_pct))}</td><td>${esc(REASONS[x.exit_reason] || x.exit_reason)}</td>` +
+      `<td>${esc(x.regime)}</td><td>v${esc(x.strategy_version)}</td></tr>`).join("") + `</tbody></table>`
+    : `<div class="empty">No closed trades yet. The first trade opens when RSI drops below ${esc(th ?? "the threshold")}.</div>`;
+
+  const c = d.changes || [];
+  $("changes").innerHTML = c.length ? c.map((x) => `<div class="change">` +
+      (x.variable ? `<strong>v${esc(x.from_version)} → v${esc(x.to_version)}</strong>: ${esc(LABELS[x.variable] || x.variable)} ${esc(x.old_value)} → ${esc(x.new_value)}`
+                  : `<strong>No change</strong>`) +
+      `<div>${esc(x.rationale)}</div><div class="meta">${esc(when(x.ts))} · ${esc(x.mode || "")}</div></div>`).join("")
+    : `<div class="empty">No strategy changes yet. The agent reviews itself after every ${esc(g.reflection_every ?? 5)} closed trades.</div>`;
+}
+
+async function refresh() {
+  try {
+    const res = await fetch("/api/status", {cache: "no-store"});
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    render(await res.json());
+    $("error").style.display = "none";
+  } catch (e) {
+    $("error").style.display = "block";
+    $("error").textContent = "Can't reach the trading worker (" + e.message + "). Retrying…";
+  }
+}
+refresh();
+setInterval(refresh, 15000);
+</script>
+</body>
+</html>

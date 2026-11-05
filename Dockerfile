@@ -29,4 +29,5 @@ ENV HERMES_TRADING_MODE=paper \
     HERMES_TRADING_STATE_DIR=/app/state \
     HERMES_TRADING_SEED_DIR=/app/seed
 
+EXPOSE 8080
 CMD ["uv", "run", "--no-sync", "python", "-m", "hermes_trading.run"]

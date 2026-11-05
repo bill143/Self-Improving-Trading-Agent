@@ -16,6 +16,22 @@ primary_region = "iad"
   source = "hermes_state"
   destination = "/app/state"
 
+# Read-only dashboard served by the worker (password via DASHBOARD_PASSWORD secret).
+# The worker must run 24/7, so machines never auto-stop.
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    method = "GET"
+    path = "/healthz"
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "60s"
+
 [[restart]]
   policy = "always"
 
