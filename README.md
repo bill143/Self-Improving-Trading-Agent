@@ -15,6 +15,7 @@ A small, runnable trading agent that:
 ```
 hermes_trading/
   run.py          entrypoint  (python -m hermes_trading.run)
+  dashboard.py    read-only web dashboard + /healthz (port 8080)
   loop.py         24/7 reliability loop: fetch -> evaluate -> trade -> log
   reflect.py      reflection cycle (--fallback deterministic, --hermes via CLI)
   score.py        score(trades, goal) -> float in [-1, +1]
@@ -85,3 +86,23 @@ A `Dockerfile` is included; it builds with `uv` and runs the worker in paper
 mode with state at `/app/state`. Mount a persistent volume at `/app/state` so
 trades and strategy history survive restarts. Going live is intentionally **not**
 a supported path in this build.
+
+### Fly.io
+
+Deployed as the worker app `hermes-trading-billy-ai` (org `Billy_AI`, region `iad`)
+with a 1 GB volume `hermes_state` at `/app/state`. On first boot the default
+`goal.yaml`/`strategy.yaml` are seeded from `/app/seed`; evolved state is never
+overwritten. Binance geo-blocks US hosts, so `fly.toml` sets
+`EXCHANGE_ID=binanceus,okx,kraken` (a failover chain).
+
+**Dashboard:** https://hermes-trading-billy-ai.fly.dev/ (username `bill`, password in
+the `DASHBOARD_PASSWORD` Fly secret). Read-only: live price, RSI signal, open
+position, return vs goal, closed trades, and the strategy change log. `/healthz`
+backs the Fly health check (fails if the loop heartbeat goes stale).
+
+```bash
+fly deploy                     # redeploy after changes
+fly logs                       # live worker output
+fly ssh console -C "cat /app/state/heartbeat.json"
+fly secrets set NEWS_API_KEY=... EXCHANGE_API_KEY=... EXCHANGE_API_SECRET=...
+```

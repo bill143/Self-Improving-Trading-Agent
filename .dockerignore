@@ -1,0 +1,10 @@
+.git
+.venv
+.claude
+.env
+__pycache__/
+*.py[cod]
+tests/
+state/position.json
+state/heartbeat.json
+state/history/v*.yaml

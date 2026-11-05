@@ -121,7 +121,7 @@ class TradingWorker:
                 data[name] = None
         return data
 
-    def _evaluate(self, strategy: dict, data: dict) -> None:
+    def _evaluate(self, strategy: dict, data: dict) -> dict:
         candles = data["price"]["candles"]
         closes = [c["close"] for c in candles]
         last = closes[-1]
@@ -138,6 +138,12 @@ class TradingWorker:
         max_hold_min = float(exit_cfg.get("max_hold_minutes", 240))
 
         position = _read_position()
+        snapshot = {
+            "rsi": round(cur_rsi, 2),
+            "regime": regime,
+            "entry_threshold": threshold,
+            "closes": [round(c, 2) for c in closes[-120:]],
+        }
 
         if position is None:
             # Entry: long when RSI dips below threshold (oversold).
@@ -158,7 +164,7 @@ class TradingWorker:
                     f"[green]OPEN long[/green] {self.asset} @ {last:.2f} "
                     f"(RSI {cur_rsi:.1f} < {threshold})"
                 )
-            return
+            return snapshot
 
         # Manage the open position: stop-loss, take-profit, or max hold.
         reason = None
@@ -170,7 +176,7 @@ class TradingWorker:
             reason = "max_hold"
 
         if reason is None:
-            return
+            return snapshot
 
         ret = (last - position["entry_price"]) / position["entry_price"]
         if position["side"] == "short":
@@ -192,14 +198,18 @@ class TradingWorker:
             f"[{color}]CLOSE {position['side']}[/{color}] {self.asset} @ {last:.2f} "
             f"({reason}, return {ret*100:+.2f}%)"
         )
+        return snapshot
 
     async def tick(self) -> None:
         strategy = _load_yaml(paths.strategy_file())
         data = await self._gather_data()
-        self._evaluate(strategy, data)
+        snapshot = self._evaluate(strategy, data)
         _write_heartbeat(
             asset=self.asset,
             mode=self.mode,
+            tick_seconds=self.tick_seconds,
+            exchange=data["price"].get("exchange"),
+            **snapshot,
             strategy_version=strategy.get("version"),
             last_price=data["price"]["last"],
             open_position=_read_position() is not None,
