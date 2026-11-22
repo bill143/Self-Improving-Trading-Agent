@@ -26,7 +26,7 @@ from pathlib import Path
 import yaml
 from rich.console import Console
 
-from . import adapters, paths
+from . import adapters, paths, reflect
 from .adapters.base import SchemaError, with_retries
 from .indicators import rsi
 
@@ -90,6 +90,7 @@ class TradingWorker:
         )
         self.mode = os.environ.get("HERMES_TRADING_MODE", "paper").lower()
         self._consecutive_failures = 0
+        self._closed_trade = False
 
     def _assert_paper(self) -> None:
         accepted = os.environ.get("HERMES_TRADING_I_ACCEPT_RISK", "false").lower() == "true"
@@ -121,7 +122,7 @@ class TradingWorker:
                 data[name] = None
         return data
 
-    def _evaluate(self, strategy: dict, data: dict) -> None:
+    def _evaluate(self, strategy: dict, data: dict) -> dict:
         candles = data["price"]["candles"]
         closes = [c["close"] for c in candles]
         last = closes[-1]
@@ -138,6 +139,12 @@ class TradingWorker:
         max_hold_min = float(exit_cfg.get("max_hold_minutes", 240))
 
         position = _read_position()
+        snapshot = {
+            "rsi": round(cur_rsi, 2),
+            "regime": regime,
+            "entry_threshold": threshold,
+            "closes": [round(c, 2) for c in closes[-120:]],
+        }
 
         if position is None:
             # Entry: long when RSI dips below threshold (oversold).
@@ -158,7 +165,7 @@ class TradingWorker:
                     f"[green]OPEN long[/green] {self.asset} @ {last:.2f} "
                     f"(RSI {cur_rsi:.1f} < {threshold})"
                 )
-            return
+            return snapshot
 
         # Manage the open position: stop-loss, take-profit, or max hold.
         reason = None
@@ -170,7 +177,7 @@ class TradingWorker:
             reason = "max_hold"
 
         if reason is None:
-            return
+            return snapshot
 
         ret = (last - position["entry_price"]) / position["entry_price"]
         if position["side"] == "short":
@@ -187,19 +194,48 @@ class TradingWorker:
         }
         _append_jsonl(paths.trades_file(), trade)
         _write_position(None)
+        self._closed_trade = True
         color = "green" if ret >= 0 else "red"
         console.print(
             f"[{color}]CLOSE {position['side']}[/{color}] {self.asset} @ {last:.2f} "
             f"({reason}, return {ret*100:+.2f}%)"
         )
+        return snapshot
+
+    def _due_for_reflection(self, strategy: dict) -> bool:
+        """Every `reflection_every` closed trades under the current strategy version."""
+        every = int(self.goal.get("reflection_every", 5))
+        if every <= 0 or os.environ.get("HERMES_REFLECT_MODE", "auto").lower() == "off":
+            return False
+        version = strategy.get("version")
+        with open(paths.trades_file()) as fh:
+            count = sum(
+                1 for line in fh
+                if line.strip() and str(json.loads(line).get("strategy_version")) == str(version)
+            )
+        return count > 0 and count % every == 0
+
+    async def _maybe_reflect(self, strategy: dict) -> None:
+        if not self._closed_trade:
+            return
+        self._closed_trade = False
+        try:
+            if self._due_for_reflection(strategy):
+                await asyncio.to_thread(reflect.reflect_auto)
+        except Exception as exc:  # noqa: BLE001 - learning must never stop trading
+            console.print(f"[red]reflection failed:[/red] {exc}")
 
     async def tick(self) -> None:
         strategy = _load_yaml(paths.strategy_file())
         data = await self._gather_data()
-        self._evaluate(strategy, data)
+        snapshot = self._evaluate(strategy, data)
+        await self._maybe_reflect(strategy)
         _write_heartbeat(
             asset=self.asset,
             mode=self.mode,
+            tick_seconds=self.tick_seconds,
+            exchange=data["price"].get("exchange"),
+            **snapshot,
             strategy_version=strategy.get("version"),
             last_price=data["price"]["last"],
             open_position=_read_position() is not None,

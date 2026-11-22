@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 
-from . import loop, paths
+from . import dashboard, loop, paths
 
 
 def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -32,6 +32,7 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> None:
     args = _parse_args(argv)
     paths.ensure_layout()
+    dashboard.start_in_background()
     try:
         asyncio.run(loop.run_worker(asset=args.asset, tick_seconds=args.tick_seconds))
     except KeyboardInterrupt:

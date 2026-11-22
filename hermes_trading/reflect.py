@@ -2,10 +2,10 @@
 
 Two modes:
 
-  --fallback   Deterministic rules. Used to prove the mechanism before Hermes
-               is wired in. If realised return < target, loosen the entry
-               threshold; else if drawdown > max, tighten the stop. Exactly one
-               variable changes.
+  --fallback   Deterministic, risk-first rules judged on the current version's
+               trades only: drawdown over max -> tighten the stop; losing ->
+               tighten the entry; below target -> loosen the entry; else hold.
+               Bounded, and exactly one variable changes.
 
   --hermes     Production mode. Formats recent trades + the current strategy
                into a prompt, calls the `hermes` CLI as a subprocess, parses the
@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import os
 import shutil
 import subprocess
 import time
@@ -114,69 +115,99 @@ def apply_change(strategy: dict, variable: str, new_value, hypothesis: dict) -> 
 # --------------------------------------------------------------------------- #
 # Mode: deterministic fallback
 # --------------------------------------------------------------------------- #
+# Guardrails for the deterministic rules: the agent may tune itself, but never
+# into a degenerate strategy (an RSI entry that fires constantly, or a stop so
+# tight every trade is noise-stopped).
+ENTRY_THRESHOLD_MIN = 15.0
+ENTRY_THRESHOLD_MAX = 45.0
+STOP_LOSS_MIN = 0.5
+ENTRY_STEP = 2.0
+STOP_STEP = 0.2
+
+
+def trades_for_version(trades: list[dict], version) -> list[dict]:
+    """Trades taken under one strategy version: the current experiment's evidence."""
+    return [t for t in trades if str(t.get("strategy_version")) == str(version)]
+
+
 def reflect_fallback() -> None:
+    """Deterministic one-variable rules, judged only on the current version's trades.
+
+    Priority (risk first):
+      1. drawdown above max         -> tighten stop_loss_pct
+      2. losing (return < 0)        -> tighten entry.threshold (be more selective)
+      3. 0 <= return < target       -> loosen entry.threshold (take more trades)
+      4. otherwise, or at a bound   -> hold (no change, recorded)
+    """
     goal = _load_yaml(paths.goal_file())
     strategy = _load_yaml(paths.strategy_file())
-    trades = _read_trades()
+    version = strategy.get("version", "01")
+    trades = trades_for_version(_read_trades(), version)
     s = score.summary(trades, goal)
 
     target = float(goal.get("target_return_30d", 0.05))
     max_dd = float(goal.get("max_drawdown", 0.08))
+    threshold = float(_get_nested(strategy, "entry.threshold") or 30)
+    stop = float(_get_nested(strategy, "stop_loss_pct") or 2.0)
 
-    print(f"[reflect:fallback] {json.dumps(s)}")
+    print(f"[reflect:fallback] v{version} {json.dumps(s)}")
 
-    # Rule priority: returns shortfall first, then excessive drawdown.
-    if s["realised_return"] < target:
-        old = float(_get_nested(strategy, "entry.threshold") or 30)
-        new = old + 2  # raise RSI entry band -> triggers longs more readily
-        apply_change(
-            strategy,
-            "entry.threshold",
-            new,
+    change = None
+    if s["max_drawdown"] > max_dd and stop > STOP_LOSS_MIN:
+        new = round(max(STOP_LOSS_MIN, stop - STOP_STEP), 4)
+        change = ("stop_loss_pct", stop, new, "drawdown_above_max",
+                  f"drawdown {s['max_drawdown']:.4f} > max {max_dd}; "
+                  f"tighten stop_loss_pct {stop} -> {new} to cap losses")
+    elif s["realised_return"] < 0 and threshold > ENTRY_THRESHOLD_MIN:
+        new = max(ENTRY_THRESHOLD_MIN, threshold - ENTRY_STEP)
+        change = ("entry.threshold", threshold, new, "losing_tighten_entry",
+                  f"realised return {s['realised_return']:.4f} < 0; tighten "
+                  f"entry.threshold {threshold} -> {new} to only buy deeper dips")
+    elif 0 <= s["realised_return"] < target and threshold < ENTRY_THRESHOLD_MAX:
+        new = min(ENTRY_THRESHOLD_MAX, threshold + ENTRY_STEP)
+        change = ("entry.threshold", threshold, new, "return_below_target",
+                  f"realised return {s['realised_return']:.4f} < target {target}; "
+                  f"loosen entry.threshold {threshold} -> {new} to take more trades")
+
+    if change is None:
+        _append_hypothesis(
             {
+                "ts": time.time(),
                 "mode": "fallback",
-                "rule": "return_below_target",
-                "rationale": (
-                    f"realised return {s['realised_return']:.4f} < target {target}; "
-                    f"loosen entry.threshold {old} -> {new} to take more trades"
-                ),
-                "predicted_score_direction": "up",
-            },
+                "rule": "hold",
+                "rationale": "metrics within goal or at a guardrail bound; no variable changed",
+                "summary": s,
+            }
         )
-        print(f"[reflect:fallback] entry.threshold {old} -> {new}")
+        print("[reflect:fallback] holding strategy (no change)")
         return
 
-    if s["max_drawdown"] > max_dd:
-        old = float(_get_nested(strategy, "stop_loss_pct") or 2.0)
-        new = round(old - 0.2, 4)  # tighten stop to cap drawdown
-        apply_change(
-            strategy,
-            "stop_loss_pct",
-            new,
-            {
-                "mode": "fallback",
-                "rule": "drawdown_above_max",
-                "rationale": (
-                    f"drawdown {s['max_drawdown']:.4f} > max {max_dd}; "
-                    f"tighten stop_loss_pct {old} -> {new}"
-                ),
-                "predicted_score_direction": "up",
-            },
-        )
-        print(f"[reflect:fallback] stop_loss_pct {old} -> {new}")
-        return
-
-    # Meeting the goal: record a "hold" without churning the strategy.
-    _append_hypothesis(
+    variable, old, new, rule, rationale = change
+    apply_change(
+        strategy,
+        variable,
+        new,
         {
-            "ts": time.time(),
             "mode": "fallback",
-            "rule": "hold",
-            "rationale": "metrics within goal; no variable changed this cycle",
+            "rule": rule,
+            "rationale": rationale,
             "summary": s,
-        }
+            "predicted_score_direction": "up",
+        },
     )
-    print("[reflect:fallback] goal met — holding strategy (no change)")
+    print(f"[reflect:fallback] {variable} {old} -> {new}")
+
+
+def reflect_auto() -> None:
+    """Run the configured reflection mode (HERMES_REFLECT_MODE).
+
+    auto (default): the Hermes CLI when it is on PATH, else the fallback rules.
+    """
+    mode = os.environ.get("HERMES_REFLECT_MODE", "auto").lower()
+    if mode == "hermes" or (mode == "auto" and shutil.which("hermes")):
+        reflect_hermes()
+    else:
+        reflect_fallback()
 
 
 # --------------------------------------------------------------------------- #
