@@ -109,5 +109,5 @@ backs the Fly health check (fails if the loop heartbeat goes stale).
 fly deploy                     # redeploy after changes
 fly logs                       # live worker output
 fly ssh console -C "cat /app/state/heartbeat.json"
-fly secrets set NEWS_API_KEY=... EXCHANGE_API_KEY=... EXCHANGE_API_SECRET=...
+fly secrets set EXCHANGE_API_KEY=... EXCHANGE_API_SECRET=...
 ```
