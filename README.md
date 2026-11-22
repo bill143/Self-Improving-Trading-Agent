@@ -67,9 +67,14 @@ free public endpoints, so API keys are optional.
 
 ## Reflection modes
 
-- **`--fallback`** — deterministic. If realised return is below target it loosens
-  `entry.threshold`; else if drawdown exceeds the max it tightens `stop_loss_pct`.
-  One variable per cycle. Proves the mechanism with no external dependency.
+The worker reflects automatically after every `reflection_every` closed trades under
+the current strategy version (`HERMES_REFLECT_MODE`: `auto` (default: Hermes CLI if
+installed, else fallback), `fallback`, `hermes`, or `off`).
+
+- **`--fallback`** — deterministic, judged only on trades taken under the current
+  strategy version, risk first: drawdown above max → tighten `stop_loss_pct`;
+  losing → tighten `entry.threshold`; positive but below target → loosen it;
+  otherwise hold. Bounded (entry 15–45, stop ≥ 0.5). One variable per cycle.
 - **`--hermes`** — formats recent trades + the strategy into a prompt, calls the
   `hermes` CLI as a subprocess, parses the returned single-variable hypothesis,
   and applies it. Falls back gracefully if `hermes` is not on `PATH`.

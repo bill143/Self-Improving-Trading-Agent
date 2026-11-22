@@ -26,7 +26,7 @@ from pathlib import Path
 import yaml
 from rich.console import Console
 
-from . import adapters, paths
+from . import adapters, paths, reflect
 from .adapters.base import SchemaError, with_retries
 from .indicators import rsi
 
@@ -90,6 +90,7 @@ class TradingWorker:
         )
         self.mode = os.environ.get("HERMES_TRADING_MODE", "paper").lower()
         self._consecutive_failures = 0
+        self._closed_trade = False
 
     def _assert_paper(self) -> None:
         accepted = os.environ.get("HERMES_TRADING_I_ACCEPT_RISK", "false").lower() == "true"
@@ -193,6 +194,7 @@ class TradingWorker:
         }
         _append_jsonl(paths.trades_file(), trade)
         _write_position(None)
+        self._closed_trade = True
         color = "green" if ret >= 0 else "red"
         console.print(
             f"[{color}]CLOSE {position['side']}[/{color}] {self.asset} @ {last:.2f} "
@@ -200,10 +202,34 @@ class TradingWorker:
         )
         return snapshot
 
+    def _due_for_reflection(self, strategy: dict) -> bool:
+        """Every `reflection_every` closed trades under the current strategy version."""
+        every = int(self.goal.get("reflection_every", 5))
+        if every <= 0 or os.environ.get("HERMES_REFLECT_MODE", "auto").lower() == "off":
+            return False
+        version = strategy.get("version")
+        with open(paths.trades_file()) as fh:
+            count = sum(
+                1 for line in fh
+                if line.strip() and str(json.loads(line).get("strategy_version")) == str(version)
+            )
+        return count > 0 and count % every == 0
+
+    async def _maybe_reflect(self, strategy: dict) -> None:
+        if not self._closed_trade:
+            return
+        self._closed_trade = False
+        try:
+            if self._due_for_reflection(strategy):
+                await asyncio.to_thread(reflect.reflect_auto)
+        except Exception as exc:  # noqa: BLE001 - learning must never stop trading
+            console.print(f"[red]reflection failed:[/red] {exc}")
+
     async def tick(self) -> None:
         strategy = _load_yaml(paths.strategy_file())
         data = await self._gather_data()
         snapshot = self._evaluate(strategy, data)
+        await self._maybe_reflect(strategy)
         _write_heartbeat(
             asset=self.asset,
             mode=self.mode,

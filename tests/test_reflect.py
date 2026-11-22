@@ -63,3 +63,51 @@ def test_fallback_changes_exactly_one_variable(state):
     assert after["stop_loss_pct"] == before["stop_loss_pct"]
     assert after["position_size_r"] == before["position_size_r"]
     assert after["entry"]["threshold"] != before["entry"]["threshold"]
+
+
+def _write_trades(tmp_path, returns, version="01"):
+    with open(tmp_path / "trades.jsonl", "w") as fh:
+        for r in returns:
+            fh.write(json.dumps({"return_pct": r, "strategy_version": version}) + "\n")
+
+
+def test_fallback_tightens_stop_first_when_drawdown_exceeded(state):
+    tmp_path, reflect = state
+    _write_trades(tmp_path, [-0.05, -0.05])  # ~9.75% drawdown > 8% max
+    reflect.reflect_fallback()
+    strat = yaml.safe_load((tmp_path / "strategy.yaml").read_text())
+    assert strat["stop_loss_pct"] == 1.8
+    assert strat["entry"]["threshold"] == 30
+
+
+def test_fallback_tightens_entry_when_losing_within_drawdown(state):
+    tmp_path, reflect = state
+    _write_trades(tmp_path, [0.01, -0.02])
+    reflect.reflect_fallback()
+    strat = yaml.safe_load((tmp_path / "strategy.yaml").read_text())
+    assert strat["entry"]["threshold"] == 28
+    assert strat["stop_loss_pct"] == 2.0
+
+
+def test_fallback_judges_only_current_version_trades(state):
+    tmp_path, reflect = state
+    # Heavy losses under an older version must not drive this version's change.
+    with open(tmp_path / "trades.jsonl", "w") as fh:
+        for _ in range(5):
+            fh.write(json.dumps({"return_pct": -0.05, "strategy_version": "00"}) + "\n")
+    reflect.reflect_fallback()
+    strat = yaml.safe_load((tmp_path / "strategy.yaml").read_text())
+    assert strat["entry"]["threshold"] == 32  # no v01 trades -> return 0 -> loosen
+
+
+def test_fallback_holds_at_guardrail_bound(state):
+    tmp_path, reflect = state
+    s = yaml.safe_load((tmp_path / "strategy.yaml").read_text())
+    s["entry"]["threshold"] = reflect.ENTRY_THRESHOLD_MIN
+    (tmp_path / "strategy.yaml").write_text(yaml.safe_dump(s, sort_keys=False))
+    _write_trades(tmp_path, [0.01, -0.02])
+    reflect.reflect_fallback()
+    after = yaml.safe_load((tmp_path / "strategy.yaml").read_text())
+    assert after["version"] == "01"
+    h = json.loads((tmp_path / "hypotheses.jsonl").read_text().splitlines()[-1])
+    assert h["rule"] == "hold"
